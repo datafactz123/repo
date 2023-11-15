@@ -1,0 +1,1 @@
+select * from DFZ_DEMO.TALEND.persons
