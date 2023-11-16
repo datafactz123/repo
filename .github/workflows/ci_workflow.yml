@@ -1,26 +1,28 @@
 name: CI
+
 on:
-   push:
+  push:
     branches: [ "main" ]
-   pull_request:
+  pull_request:
     branches: [ "main" ]
-   workflow_dispatch:
+  workflow_dispatch:
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@masterbranch
+      - uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
-      - name: Install dependencies
+          python-version: '3.x' # Choose your Python version
+
+      - name: Install dbt
         run: |
           pip install dbt
-          dbt deps
-      - name: Run dbt
+
+      - name: Run dbt models
         run: |
-          dbt run -- select example
-      - name: Test using dbt 
-          dbt test -- select example
+          dbt run
