@@ -11,10 +11,10 @@ models:
           - unique
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+  - name: transaction_data
+    description: "transactions data"
     columns:
-      - name: id
+      - name: TransactionID
         description: "The primary key for this table"
         tests:
           - unique
