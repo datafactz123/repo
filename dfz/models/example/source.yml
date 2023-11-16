@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: customers
+    database: dfz_demo  
+    schema: dbt_core  
+    tables:
+      - name: cust_info
+      - name: ticket_data
+      - name: transaction_data

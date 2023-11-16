@@ -1,5 +1,6 @@
-select CustomerID ,
+select 
+    CustomerID ,
 	CustomerName ,
 	ContactNumber ,
 	Email 
-from DFZ_DEMO.DBT_CORE.CUST_INFO
+from {{ source('customers', 'cust_info') }}
