@@ -23,10 +23,6 @@ jobs:
         run: |
           pip install dbt
         shell: bash
-        
-      - name: Navigate to dbt Project Directory
-        run: cd ${{ github.workspace }}/Users/skrishna/Desktop/DBT/dbt-project/dfz
-        shell: bash
 
       - name: Run dbt models
         run: |
