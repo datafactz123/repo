@@ -1,30 +1,21 @@
-name: CI
-
+name: Deploy dbt
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-
-jobs:
-  build:
+ jobs:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-
+      - name: Checkout repository
+        uses: actions/checkout@masterbranch
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x' # Choose your Python version
-
-      - name: Install dbt
+          python-version: '3.8'
+      - name: Install dependencies
         run: |
           pip install dbt
-        shell: bash
-
-      - name: Run dbt models
+          dbt deps --target {{target}}
+      - name: Run dbt
         run: |
-          export DBT_PROJECT_PATH=/Users/skrishna/Desktop/DBT/dbt-project/dfz/dbt_project.yml
-          dbt run
+          dbt run -- select example
+      - name: Test using dbt 
+          dbt test -- select example
