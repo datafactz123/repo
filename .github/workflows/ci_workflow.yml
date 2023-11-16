@@ -26,4 +26,5 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run
+          dbt run -p /Users/skrishna/Desktop/DBT/dbt-project/dfz/dbt_project.yml
+
