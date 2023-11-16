@@ -25,7 +25,7 @@ jobs:
         shell: bash
         
       - name: Navigate to dbt Project Directory
-        run:  cd Users/skrishna/Desktop/DBT/dbt-project/dfz
+        run: cd ${{ github.workspace }}/Users/skrishna/Desktop/DBT/dbt-project/dfz
         shell: bash
 
       - name: Run dbt models
