@@ -1,1 +1,0 @@
-select id,ename from DFZ_DEMO.TALEND.SRC_EMP
