@@ -14,15 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x' # Choose your Python version
-
-      - name: Install dbt
-        run: |
-          pip install dbt
-
       - name: Run dbt models
         run: |
-          dbt run
+          dbt run --select example
