@@ -26,5 +26,5 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run -p /Users/skrishna/Desktop/DBT/dbt-project/dfz/dbt_project.yml
-
+          export DBT_PROJECT_PATH=/Users/skrishna/Desktop/DBT/dbt-project/dfz/dbt_project.yml
+          dbt run
