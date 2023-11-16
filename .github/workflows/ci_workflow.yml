@@ -25,7 +25,7 @@ jobs:
         shell: bash
         
       - name: Navigate to dbt Project Directory
-        run:  cd C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\dbt_project.yml
+        run:  cd C:/Users/skrishna/Desktop/DBT/dbt-project/dfz/dbt_project.yml
         shell: bash
 
       - name: Run dbt models
