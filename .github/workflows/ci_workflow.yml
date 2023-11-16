@@ -1,31 +1,27 @@
-name: schedule_dbt_run
+name: dbt Workflow
+
 on:
- push:
+  push:
     branches:
-    # run on push to main branch
-    - main
-    
+      - main
+
 jobs:
- schedule_dbt_run:
-    name: schedule_dbt_run
+  build:
     runs-on: windows-latest
 
     steps:
-    - name: Check out
-      uses: actions/checkout@master
-    - name: set up python 
-      uses: actions/setup-python@v1
-      with:
-        python-version: "3.7.x"
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-    - name: Install dependencies
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dbt
       run: |
         pip install dbt
-        dbt deps
-
-    # dbt related commands here - run use --target prod/dev to run for specific environments
-    - name: Run dbt models
-      run: dbt run
-
-    - name: Test dbt models
-      run: dbt test
+        
+    - name: Run dbt
+      run: |
+        dbt run
