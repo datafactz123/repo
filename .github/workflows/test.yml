@@ -1,9 +1,29 @@
-import os
+import requests
+import subprocess
 
-directory_path = r'C:\Users\skrishna\Desktop\DBT\dbt-project\dfz'
+def get_github_workflow_run_token(repo, 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):
+    # Get a GitHub token with workflow access
+    response = requests.post(
+        f"https://api.github.com/repos/{repository}/actions/runners/registration-token",
+        headers={"Authorization": f"token {github_token}"}
+    )
+    response.raise_for_status()
+    return response.json()["token"]
 
-if os.path.exists(directory_path):
-    os.chdir(directory_path)
-    print(f"Changed to directory: {directory_path}")
-else:
-    print(f"Directory does not exist: {directory_path}")
+def trigger_dbt_run(repo, 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, workflow):
+    # Trigger a GitHub Actions workflow run
+    token = get_github_workflow_run_token(repo, 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)
+    response = requests.post(
+        f"https://api.github.com/repos/{repository}/actions/workflows/{workflow_name}/dispatches",
+        headers={"Authorization": f"token {token}"}
+    )
+    response.raise_for_status()
+
+if __name__ == "__main__":
+    # Replace these with your GitHub repository information
+    github_repository = "datafactz123"
+    github_token = "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"
+    workflow_name = "workflow.yml"  # Replace with the name of your dbt workflow file
+
+    # Trigger dbt run
+    trigger_dbt_run(github_repository, github_token, workflow_name)
