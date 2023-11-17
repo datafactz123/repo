@@ -25,7 +25,7 @@ jobs:
           # Add any additional dependencies if needed
 
       - name: Change to the project directory
-        run: cd Users\skrishna\Desktop\DBT\dbt-project\dfz
+        run: cd C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
 
       - name: Run dbt models
         run: dbt run
