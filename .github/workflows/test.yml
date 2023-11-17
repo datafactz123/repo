@@ -1,0 +1,9 @@
+import os
+
+directory_path = r'C:\Users\skrishna\Desktop\DBT\dbt-project\dfz'
+
+if os.path.exists(directory_path):
+    os.chdir(directory_path)
+    print(f"Changed to directory: {directory_path}")
+else:
+    print(f"Directory does not exist: {directory_path}")
