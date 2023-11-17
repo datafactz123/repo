@@ -1,0 +1,27 @@
+name: dbt Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dbt
+      run: |
+        pip install dbt
+        
+    - name: Run dbt
+      run: |
+        dbt run
