@@ -10,6 +10,22 @@ models:
         tests:
           - unique
           - not_null
+          - dbt_constraints.primary_key
+
+  - name: ticket_data
+    description: "ticket details"
+    columns:
+      - name: ticketid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+          - dbt_constraints.primary_key
+      - name: customerid
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('cust_info')
+              pk_column_name: customer_id
 
   - name: transaction_data
     description: "transactions data"
@@ -19,3 +35,9 @@ models:
         tests:
           - unique
           - not_null
+          - dbt_constraints.primary_key
+      - name: customerid
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('cust_info')
+              pk_column_name: customer_id
