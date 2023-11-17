@@ -1,31 +1,25 @@
-name: CI
+name: Run dbt models on Windows
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-
+    branches:
+      - main
 jobs:
-  build:
-    runs-on: windows-latest
+  run-dbt-models:
+    runs-on: windows-latest  
+steps:     
+ - name: Checkout repository
+   uses: actions/checkout@v3
+     
+ - name: Setup Python
+   uses: actions/setup-python@v3
+   with:
+     python-version:"3.x"
 
-    steps:
-      - uses: actions/checkout@v3
+ - name: Install dbt
+   run: |
+     pip install dbt
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-
-      - name: Install dbt and dependencies
-        run: |
-          pip install dbt
-          # Add any additional dependencies if needed
-
-      - name: Change to the project directory
-        run: cd C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
-
-      - name: Run dbt models
-        run: dbt run
+ - name: Run dbt models
+   run: |
+    dbt run --project-dir
