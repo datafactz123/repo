@@ -25,7 +25,7 @@ models:
         tests:
           - dbt_constraints.foreign_key:
               pk_table_name: ref('cust_info')
-              pk_column_name: customer_id
+              pk_column_name: customerid
 
   - name: transaction_data
     description: "transactions data"
@@ -40,4 +40,4 @@ models:
         tests:
           - dbt_constraints.foreign_key:
               pk_table_name: ref('cust_info')
-              pk_column_name: customer_id
+              pk_column_name: customerid
