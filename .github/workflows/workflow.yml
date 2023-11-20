@@ -28,5 +28,5 @@ jobs:
 
       - name: Run dbt models
         run: |
-          cd repo  # Change to the repository directory
+          cd ./repo  # Change to the repository directory
           dbt run --models example/cust_info
