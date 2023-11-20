@@ -1,0 +1,33 @@
+name: Run dbt Models and Tests
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+  schedule:
+    - cron: '0 0 * * *'  # Schedule to run every day at midnight UTC
+
+jobs:
+  run-dbt:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dbt
+      run: |
+        python -m pip install --upgrade pip
+        pip install dbt
+
+    - name: Run dbt models and tests
+      run: dbt run --profiles-dir C:\Users\skrishna\.dbt --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz 
+	  
+	- name: Run dbt tests
+      run: dbt test --profiles-dir C:\Users\skrishna\.dbt --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
+	  
