@@ -24,4 +24,4 @@ jobs:
         pip install dbt
 
     - name: Run dbt models and tests
-      run: dbt run  --project-dir repo/dfz/models/example/
+      run: dbt run  --select "path:repo/dfz/models/example/*"
