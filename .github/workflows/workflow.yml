@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main  # Change this to your main branch name
-  schedule:
-    - cron: '0 0 * * *'  # Schedule to run every day at midnight UTC
 
 jobs:
   run-dbt:
@@ -28,6 +26,6 @@ jobs:
     - name: Run dbt models and tests
       run: dbt run --profiles-dir C:\Users\skrishna\.dbt --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz 
 	  
-	- name: Run dbt tests
+    - name: Run dbt tests
       run: dbt test --profiles-dir C:\Users\skrishna\.dbt --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
 	  
