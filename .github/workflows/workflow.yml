@@ -18,4 +18,4 @@ jobs:
         python-version: '3.x'
 
     - name: Run dbt
-      run: dbt run -d C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
+      run: dbt run -d C:/Users/skrishna/Desktop/DBT/dbt-project/dfz
