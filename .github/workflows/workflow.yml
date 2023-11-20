@@ -22,4 +22,4 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run --select C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
+          dbt run --select C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\models\example\cust_info.sql
