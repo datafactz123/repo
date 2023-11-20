@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        url: ${{ github.com/datafactz123/repo.git }}
+        url: ${{ https://github.com/datafactz123/repo.git }}
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -23,5 +23,5 @@ jobs:
     - name: Install dbt
       run: pip install -U dbt
 
-    - name: Run dbt models and tests
-      run: dbt run --models "repo/dfz/models/example/cust_info.sql"
+    - name: Run dbt models
+      run: dbt run --models "C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\models\example\cust_info.sql"
