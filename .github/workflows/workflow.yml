@@ -24,4 +24,4 @@ jobs:
       run: pip install -U dbt
 
     - name: Run dbt models
-      run: dbt run --models "dfz\models\example\cust_info.sql"
+      run: dbt run --models "dfz/models/example/cust_info.sql"
