@@ -24,8 +24,7 @@ jobs:
         pip install dbt
 
     - name: Run dbt models and tests
-      run: dbt run --profiles-dir C:\Users\skrishna\.dbt --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz 
-	  
+      run: dbt run 
+      
     - name: Run dbt tests
-      run: dbt test --profiles-dir C:\Users\skrishna\.dbt --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
-	  
+      run: dbt test 
