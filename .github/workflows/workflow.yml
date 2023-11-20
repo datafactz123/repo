@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          url: ${{ https://github.com/datafactz123/repo.git }}
+          repository: datafactz123/repo  # Corrected the repository URL
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -27,4 +27,6 @@ jobs:
           pip install dbt-snowflake==1.1.0
 
       - name: Run dbt models
-        run: dbt run --models "repo/dfz/models/example/cust_info.sql"
+        run: |
+          cd repo  # Change to the repository directory
+          dbt run --models example/cust_info
