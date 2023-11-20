@@ -32,4 +32,4 @@ jobs:
 
       - name: Run dbt models
         run: |
-          & "C:\Users\skrishna\Desktop\DBT\dbt-env\Scripts\dbt.exe" run --select C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\models\example\cust_info.sql
+          dbt run --select C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\models\example\cust_info.sql
