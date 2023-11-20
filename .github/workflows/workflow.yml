@@ -1,4 +1,4 @@
-name: Run dbt Models and Tests
+name: Run dbt Models
 
 on:
   push:
@@ -10,18 +10,18 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          url: ${{ https://github.com/datafactz123/repo.git }}
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        url: ${{ https://github.com/datafactz123/repo.git }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-      - name: Install dbt
-        run: pip install -U dbt
+    - name: Install dbt
+      run: pip install -U dbt
 
-      - name: Run dbt models and tests
-        run: dbt run --models "repo/dfz/models/example/cust_info.sql,repo/dfz/models/example/ticket_data.sql"
+    - name: Run dbt models and tests
+      run: dbt run --models "repo/dfz/models/example/cust_info.sql,repo/dfz/models/example/ticket_data.sql"
