@@ -32,4 +32,4 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run --profiles-dir C:\Users\skrishna\.dbt --select C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\models\example\cust_info.sql
+          dbt run --profiles-dir C:\Users\skrishna\.dbt\profiles.yml --select C:\Users\skrishna\Desktop\DBT\dbt-project\dfz\models\example\cust_info.sql
