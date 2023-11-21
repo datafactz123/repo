@@ -33,4 +33,4 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run --profiles-dir C:\Users\skrishna\.dbt --select example/cust_info
+          dbt run
