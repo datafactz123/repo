@@ -1,4 +1,4 @@
-ame: Run dbt Models
+name: Run dbt Models
 
 on:
   push:
