@@ -26,7 +26,7 @@ jobs:
 
     - name: Grant permissions
       run: |
-        icacls "C:\Users\skrishna\Desktop\DBT\dbt-project\dfz" /grant:r Users:R /T
+        Get-Acl "C:\Users\skrishna\Desktop\DBT\dbt-project\dfz" | Add-AccessRule -User "Users" -Permission ReadAndExecute | Set-Acl
 
     - name: Debug - List source directory
       run: |
