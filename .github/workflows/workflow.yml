@@ -6,14 +6,30 @@ on:
       - main  # Change this to your main branch name
 
 jobs:
-  run-dbt:
-    runs-on: windows-latest
+  upload-artifact:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
           repository: datafactz123/repo  # Corrected the repository URL
+
+      - name: Upload dfz directory
+        uses: actions/upload-artifact@v2
+        with:
+          name: dfz-artifact
+          path: dfz  # Adjust the path to your dfz directory
+
+  run-dbt:
+    needs: upload-artifact
+    runs-on: windows-latest
+
+    steps:
+      - name: Download dfz directory
+        uses: actions/download-artifact@v2
+        with:
+          name: dfz-artifact
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -26,11 +42,6 @@ jobs:
           pip install dbt
           pip install dbt-snowflake
 
-      - name: Set Environment Variables
-        run: |
-          echo "DBT_PROFILES_DIR=C:\Users\skrishna\.dbt" >> $GITHUB_ENV
-          echo 'C:\Users\skrishna\Desktop\DBT\dbt-env\Scripts' >> $GITHUB_PATH
-
       - name: Run dbt models
         run: |
-          dbt run --project-dir dfz --select example/cust_info --profiles-dir C:\Users\skrishna\.dbt
+          dbt run --project-dir dfz --select example/cust_info
