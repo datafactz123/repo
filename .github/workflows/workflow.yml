@@ -34,5 +34,4 @@ jobs:
           
       - name: Run dbt models
         run: |
-          dbt run --profiles-dir C:\Users\skrishna\.dbt
-          dbt run --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
+          dbt run
