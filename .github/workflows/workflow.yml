@@ -26,11 +26,11 @@ jobs:
           pip install dbt
           pip install dbt-snowflake
 
-      - name: Create Environment File
+      - name: Set Environment Variables
         run: |
+          echo "DBT_PROFILES_DIR=C:\Users\skrishna\.dbt" >> $GITHUB_ENV
           echo 'C:\Users\skrishna\Desktop\DBT\dbt-env\Scripts' >> $GITHUB_PATH
-          echo 'C:\Users\skrishna\.dbt' >> $GITHUB_PATH
 
       - name: Run dbt models
         run: |
-          dbt run
+          dbt run --select example/cust_info
