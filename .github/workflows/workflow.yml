@@ -44,4 +44,4 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run --project-dir dfz --select example/cust_info
+          dbt run --select example/cust_info
