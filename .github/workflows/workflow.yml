@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main  # Change this to your main branch name
-      
+
 jobs:
   run-dbt:
     runs-on: windows-latest
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        url: ${{ https://github.com/datafactz123/repo.git }}
+        repository: datafactz123/repo  # Replace with your actual repository name
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -40,8 +40,9 @@ jobs:
                     user: saikrishna
                     warehouse: COMPUTE_WH
                 target: dev" > C:\Users\skrishna\.dbt\profiles.yml
-        cp -R C:\Users\skrishna\Desktop\DBT\dbt-project\dfz /dfz
+        robocopy /S C:\Users\skrishna\Desktop\DBT\dbt-project\dfz C:\Users\skrishna\Desktop\DBT\dbt-project\dfz  # Replace with the actual path to your repository
+
     - name: Run dbt
       run: |
-        cd /dfz
+        cd C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
         dbt run
