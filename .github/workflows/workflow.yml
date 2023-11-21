@@ -6,30 +6,14 @@ on:
       - main  # Change this to your main branch name
 
 jobs:
-  upload-artifact:
-    runs-on: ubuntu-latest
+  run-dbt:
+    runs-on: windows-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
           repository: datafactz123/repo  # Corrected the repository URL
-
-      - name: Upload dfz directory
-        uses: actions/upload-artifact@v2
-        with:
-          name: dfz-artifact
-          path: dfz  # Adjust the path to your dfz directory
-
-  run-dbt:
-    needs: upload-artifact
-    runs-on: windows-latest
-
-    steps:
-      - name: Download dfz directory
-        uses: actions/download-artifact@v2
-        with:
-          name: dfz-artifact
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -44,4 +28,4 @@ jobs:
 
       - name: Run dbt models
         run: |
-          dbt run --select example/cust_info
+          dbt run --project-dir ${{ github.workspace }}/dfz --select example/cust_info
