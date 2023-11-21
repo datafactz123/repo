@@ -23,6 +23,11 @@ jobs:
     - name: Install dbt
       run: |
         pip install -U dbt
+
+    - name: Grant permissions
+      run: |
+        icacls "C:\Users\skrishna\Desktop\DBT\dbt-project\dfz" /grant:r datafactz123:R /T
+
     - name: Debug - List source directory
       run: |
         dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
