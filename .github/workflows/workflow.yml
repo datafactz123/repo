@@ -1,4 +1,4 @@
-name: Schedule dbt Run
+ame: Run dbt Models
 
 on:
   push:
@@ -10,43 +10,27 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        repository: datafactz123/repo  # Replace with your actual repository name
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          repository: datafactz123/repo  # Corrected the repository URL
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'  # Specify the Python version required by dbt
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Install dbt
-      run: |
-        pip install -U dbt
+      - name: Install dbt and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt
+          pip install dbt-snowflake
 
-    - name: Debug - List source directory
-      run: |
-        dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
-
-    - name: Set up dbt profile and project directory
-      run: |
-        mkdir -p C:\Users\skrishna\.dbt
-        echo "dfz:
-                outputs:
-                  dev:
-                    account: proahry-rw38174
-                    database: DBT
-                    password: Welcome@123
-                    role: ACCOUNTADMIN
-                    schema: CORE
-                    threads: 4
-                    type: snowflake
-                    user: saikrishna
-                    warehouse: COMPUTE_WH
-                target: dev" > C:\Users\skrishna\.dbt\profiles.yml
-        robocopy /S C:\Users\skrishna\Desktop\DBT\dbt-project\dfz C:\Users\skrishna\Desktop\DBT\dbt-project\dfz  # Replace with the actual path to your repository
-
-    - name: Run dbt
-      run: |
-        cd C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
-        dbt run
+      - name: Add dbt to PATH
+        run: |
+          echo 'C:\Users\skrishna\Desktop\DBT\dbt-env\Scripts' >> $GITHUB_PATH
+          
+      - name: Run dbt models
+        run: |
+          dbt run --profiles-dir C:\Users\skrishna\.dbt
+          dbt run --project-dir C:\Users\skrishna\Desktop\DBT\dbt-project\dfz
