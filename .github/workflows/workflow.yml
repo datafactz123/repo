@@ -26,7 +26,7 @@ jobs:
 
     - name: Grant permissions
       run: |
-        icacls "C:\Users\skrishna\Desktop\DBT\dbt-project\dfz" /grant:r datafactz123:R /T
+        icacls "C:\Users\skrishna\Desktop\DBT\dbt-project\dfz" /grant:r dfi\skrishna:R /T
 
     - name: Debug - List source directory
       run: |
