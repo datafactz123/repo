@@ -1,31 +1,47 @@
-name: Run dbt Models
+name: Schedule dbt Run
 
 on:
   push:
     branches:
       - main  # Change this to your main branch name
-
+      
 jobs:
   run-dbt:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          repository: datafactz123/repo  # Corrected the repository URL
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        url: ${{ https://github.com/datafactz123/repo.git }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify the Python version required by dbt
 
-      - name: Install dbt and dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install dbt
-          pip install dbt-snowflake
+    - name: Install dbt
+      run: |
+        pip install -U dbt
 
-      - name: Run dbt models
-        run: |
-          dbt run --project-dir ${{ github.workspace }}/dfz --select example/cust_info
+    - name: Set up dbt profile and project directory
+      run: |
+        mkdir -p C:\Users\skrishna\.dbt
+        echo "dfz:
+                outputs:
+                  dev:
+                    account: proahry-rw38174
+                    database: DBT
+                    password: Welcome@123
+                    role: ACCOUNTADMIN
+                    schema: CORE
+                    threads: 4
+                    type: snowflake
+                    user: saikrishna
+                    warehouse: COMPUTE_WH
+                target: dev" > C:\Users\skrishna\.dbt\profiles.yml
+        cp -R C:\Users\skrishna\Desktop\DBT\dbt-project\dfz /dfz
+    - name: Run dbt
+      run: |
+        cd /dfz
+        dbt run
