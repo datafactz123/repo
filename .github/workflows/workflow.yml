@@ -28,4 +28,4 @@ jobs:
           
       - name: Run dbt models
         run: |
-          dbt run --profile-dir ${{ github.workspace }}\dbt-project\dfz
+          dbt run --profiles-dir ${{ github.workspace }}
