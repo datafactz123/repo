@@ -7,10 +7,12 @@ on:
 jobs:
   example-job:
     runs-on: windows-latest
-
+    env:
+      MY_ENV_VARIABLE: ${{ github.workspace }}
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Print workspace path
-        run: echo "Workspace Path: ${{ github.workspace }}"
+        run: echo "Workspace Path ${{ github.workspace }}"
