@@ -3,7 +3,7 @@ name: Run dbt Models
 on:
   push:
     branches:
-      - main  # Change this to your main branch name
+      - main
 
 jobs:
   run-dbt:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          repository: datafactz123/repo  # Corrected the repository URL
+          repository: datafactz123/repo
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -28,10 +28,10 @@ jobs:
 
       - name: Create Environment File
         run: |
-          echo 'C:\Users\skrishna\Desktop\DBT\dbt-env\Scripts' >> $GITHUB_PATH
-          echo 'C:\Users\skrishna\.dbt' >> $GITHUB_PATH
-          echo 'C:\Users\skrishna\Desktop\DBT\dbt-project\dfz' >> $GITHUB_PATH
+          echo '${{ github.workspace }}\dbt-env\Scripts' >> $GITHUB_PATH
+          echo '${{ github.workspace }}\.dbt' >> $GITHUB_PATH
+          echo '${{ github.workspace }}\dbt-project\dfz' >> $GITHUB_PATH
           
       - name: Run dbt models
         run: |
-          dbt run
+          dbt run --profiles-dir ${{ github.workspace }}\dbt-project\dfz
