@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          url: ${{ https://github.com/datafactz123/repo.git }}
 
       - name: Print workspace path
         run: echo "Workspace Path ${{ https://github.com/datafactz123/repo.git }}"
