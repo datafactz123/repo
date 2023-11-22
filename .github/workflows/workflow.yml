@@ -27,7 +27,7 @@ jobs:
           pip install dbt-snowflake
           
       - name: Install dbt dependencies
-        run: dbt deps
+        run: dbt deps --profiles-dir ${{ github.workspace }}\dfz --project-dir ${{ github.workspace }}\dfz
           
       - name: Run dbt models
         run: |
