@@ -15,4 +15,4 @@ jobs:
           url: ${{ https://github.com/datafactz123/repo.git }}
 
       - name: Print workspace path
-        run: echo "Workspace Path ${{ github.workspace }}"
+        run: echo "Workspace Path ${{ https://github.com/datafactz123/repo.git }}"
