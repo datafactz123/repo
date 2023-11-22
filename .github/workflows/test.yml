@@ -16,3 +16,7 @@ jobs:
 
       - name: Print workspace path
         run: echo "Workspace Path ${{ github.workspace }}"
+      - name: Debug Workspace Contents
+        run: |
+          ls -R ${{ github.workspace }}
+
