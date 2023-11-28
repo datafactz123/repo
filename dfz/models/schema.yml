@@ -12,10 +12,10 @@ models:
           - not_null
 
       - name: first_name
-        description: Customer's first name. PII.
+        description: Customer's first name.
 
       - name: last_name
-        description: Customer's last name. PII.
+        description: Customer's last name.
 
       - name: first_order
         description: Date (UTC) of a customer's first order
