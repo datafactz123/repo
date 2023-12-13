@@ -23,6 +23,6 @@
   {% endcall %}
 
   {% call dbt_unit_testing.expect() %}
-    select 1 as customer_id, 20 as customer_lifetime_value
+    select 1 as customer_id, 30 as customer_lifetime_value
   {% endcall %}
 {% endcall %}
