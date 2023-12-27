@@ -1,13 +1,13 @@
 dfz:
   outputs:
     dev:
-      account: vijpaot-uqb01557
+      account: ylbwfsa-if35636
       database: DB_DBT_POC
-      password: Naren@2023
+      password: Rama@003
       role: ACCOUNTADMIN
       schema: DBT_SCHEMA
       threads: 4
       type: snowflake
-      user: narenkumar
+      user: ANKITHA
       warehouse: COMPUTE_WH
   target: dev
