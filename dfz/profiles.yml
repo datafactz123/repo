@@ -1,7 +1,7 @@
 dfz:
   outputs:
     dev:
-      account: yivcjvew-sv34964
+      account: ivcjvew-sv34964
       database: DB_DBT_POC
       password: Nandini@123
       role: ACCOUNTADMIN
