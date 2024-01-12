@@ -8,3 +8,4 @@ sources:
       - name: cust_info
       - name: ticket_data
       - name: transaction_data
+      - name: hip_hop_artists
