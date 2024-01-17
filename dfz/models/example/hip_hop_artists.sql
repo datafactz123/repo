@@ -9,7 +9,7 @@ with source_model as (
 final as (
     select
     name,
-    age,
+    cast(age as number) as age,
     city
     from source_model
 )
