@@ -8,10 +8,9 @@ with source_model as (
 
 final as (
     select
-    artist_name,
-    birth_name,
-    home_city,
-    home_state
+    name,
+    age,
+    city
     from source_model
 )
 select * from final
